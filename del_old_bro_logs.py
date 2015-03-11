@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 
-import os, sys
+import os, sys, re
+import shutil
 
-pcaps_path = "/nsm/pcaps"
-pcap_prefix = "data.pcap"
+logs_path = "/nsm/bro/logs"
 threshold = 98
 
-st = os.statvfs(pcaps_path)
+r = re.compile('^2[0-9]{3}-[0-9]{2}-[0-9]{2}$')
+
+st = os.statvfs(logs_path)
 free = (st.f_bavail * st.f_frsize)
 total = (st.f_blocks * st.f_frsize)
 used = (st.f_blocks - st.f_bfree) * st.f_frsize
@@ -18,14 +20,14 @@ except ZeroDivisionError:
 print(percent)
 
 if percent*100 > threshold:
-    files = []
-    for file in os.listdir(pcaps_path):
-        if file.startswith(pcap_prefix):
-            files.append(file)
-    files.sort()
-    todelete = files[0:2]
+    dirs = []
+    for dir in os.listdir(logs_path):
+        if r.search(dir):
+            dirs.append(dir)
+    dirs.sort()
+    todelete = dirs[0:2]
     try:
-        os.chdir(pcaps_path)
+        os.chdir(logs_path)
     except:
         print("os.chdir failed, quitting")
         sys.exit(1)
@@ -35,11 +37,11 @@ if percent*100 > threshold:
         except:
             print("os.getcwd failed, quitting")
             sys.exit(1)
-        if curpath == pcaps_path:
+        if curpath == logs_path:
             if not os.path.islink(curpath+deleteme):
                 print(deleteme)
                 try:
-                    os.remove(deleteme)
+                    shutil.rmtree(deleteme)
                 except:
-                    print("os.remove failed, continuing")
+                    print("shutil.rmtree failed, continuing")
 

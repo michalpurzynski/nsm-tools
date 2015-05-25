@@ -75,9 +75,6 @@ def filter_list_csv(ioc_list):
                     filtered_ioc_list[indicator][category] = { 'desc': category_name + '_' + score, 'score': score, 'lastseen': lastseen }
 
     f.close()
-    for okey, odict in filtered_ioc_list.items():
-        for ikey, idict in odict.items():
-            print(okey, ikey, idict)
 
     return filtered_ioc_list
 

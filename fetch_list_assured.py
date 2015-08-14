@@ -11,10 +11,10 @@ import json
 import urllib.request
 import shutil
 
-listsandsizes = { 'iqrisk.ioc.addr.bro' : { 'url' : 'https://<hostname>/iqrisk.ioc.addr.bro', 'size' : 1000, 'path' : '/opt/bro/share/bro/intels' },
-                    'iqrisk.ioc.addr.suricata' : { 'url' : 'https://<hostname>/iqrisk.ioc.addr.suricata', 'size' : 1000, 'path' : '/etc/nsm' },
-                    'iqrisk.ioc.cat.suricata' : { 'url' : 'https://<hostname>/iqrisk.ioc.cat.suricata', 'size' : 1000, 'path' : '/etc/nsm' },
-                    'iqrisk.ioc.domain.bro' : { 'url' : 'https://<hostname>/iqrisk.ioc.domain.bro', 'size' : 1000, 'path' : '/opt/bro/share/bro/intels' } }
+listsandsizes = { 'iqrisk.ioc.addr.bro' : { 'url' : 'https://<FIXME>/iqrisk.ioc.addr.bro', 'size' : 1000, 'path' : '/opt/bro/share/bro/intelzilla' },
+                    'iqrisk.ioc.addr.suricata' : { 'url' : 'https://<FIXME>/iqrisk.ioc.addr.suricata', 'size' : 1000, 'path' : '/etc/nsm' },
+                    'iqrisk.ioc.cat.suricata' : { 'url' : 'https://<FIXME>/iqrisk.ioc.cat.suricata', 'size' : 1000, 'path' : '/etc/nsm' },
+                    'iqrisk.ioc.domain.bro' : { 'url' : 'https://<FIXME>/iqrisk.ioc.domain.bro', 'size' : 1000, 'path' : '/opt/bro/share/bro/intelzilla' } }
 
 headers = { 'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:35.0) Gecko/20150101 Firefox/35.0',
             'Accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
